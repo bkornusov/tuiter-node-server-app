@@ -1,4 +1,4 @@
-import * as tuitsDao from "../../daos/tuits/tuits-dao.js";
+import * as tuitsDao from "./tuits-dao.js";
 
 const createTuit = async (req, res) => {
   const newTuit = req.body;
@@ -8,13 +8,18 @@ const createTuit = async (req, res) => {
   res.json(newTuit);
 };
 const findTuits = async (req, res) => {
-  const tuits = tuitsDao.findTuits();
+  const tuits = await tuitsDao.findTuits();
   res.json(tuits);
 };
 const updateTuit = async (req, res) => {
   const tuitdIdToUpdate = req.params.tid;
   const updates = req.body;
   const status = await tuitsDao.updateTuit(tuitdIdToUpdate, updates);
+  res.json(status);
+};
+const deleteTuit = async (req, res) => {
+  const tuitdIdToDelete = req.params.tid;
+  const status = await tuitsDao.deleteTuit(tuitdIdToDelete);
   res.json(status);
 };
 

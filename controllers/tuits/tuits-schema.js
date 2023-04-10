@@ -3,7 +3,7 @@ const schema = new mongoose.Schema(
   {
     tuit: String,
     likes: Number,
-    liekd: Boolean,
+    liked: Boolean,
   },
   { collection: "tuits" }
 );
